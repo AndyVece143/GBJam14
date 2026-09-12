@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26063e7e2da525d4cb1d8e301cd247b3, type: 3}
+  m_Name: Testing
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  Sentences:
+  - Text: Woah, I made a dialogue box!
+    emotion: 0
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: I'm so happy! This is so cool!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: Hmm... now I'm thinking about thoughtful things.
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: GRRRR... NOW I'M ANGRY!!! I HATE DIALOGUE!
+    emotion: 3
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: AHH!!! Now I'm scared of dialogue! Stop talking!
+    emotion: 4
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: '*sniff* now I''m sad. Super sad...'
+    emotion: 5
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: I'm actually super neutral about dialogue. Eh...
+    emotion: 6
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  - Text: Woah, I can give a thumbs up! Cool!
+    emotion: 7
+    name: 
+    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  Character1: {fileID: 0}
+  Character2: {fileID: 0}
