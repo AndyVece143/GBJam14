@@ -64,6 +64,8 @@ MonoBehaviour:
   ready: 0
   dampSpeed: 7
   canPlayerMove: 0
+  displayController: {fileID: 0}
+  background: {fileID: 5811737550764155018}
 --- !u!223 &7916396287671229396
 Canvas:
   m_ObjectHideFlags: 0

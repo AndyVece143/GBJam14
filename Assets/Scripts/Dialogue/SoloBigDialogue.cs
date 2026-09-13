@@ -1,7 +1,9 @@
+using GBTemplate;
 using System.Collections;
 using TMPro;
 using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoloBigDialogue : MonoBehaviour
 {
@@ -27,7 +29,9 @@ public class SoloBigDialogue : MonoBehaviour
     //public CameraController mainCamera;
     //public Player player;
     public bool canPlayerMove;
-
+    public GBDisplayController displayController;
+    public Image background;
+    public Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,11 +40,18 @@ public class SoloBigDialogue : MonoBehaviour
         canvas = GetComponent<Canvas>();
         canvas.worldCamera = Camera.main;
         mainText.text = string.Empty;
+        displayController = GBDisplayController.FindAnyObjectByType<GBDisplayController>();
+        player = Player.FindAnyObjectByType<Player>();
         //mainCamera = CameraController.FindAnyObjectByType<CameraController>();
         //mainCamera.state = CameraController.State.StayStill;
 
-        BeginningSprite();
-        SetPositions();
+        character1.GetComponent<Image>().enabled = false;
+        background.enabled = false;
+        textBox.SetActive(false);
+
+        StartCoroutine(TransitionBeginning());
+        //BeginningSprite();
+        //SetPositions();
     }
 
     // Update is called once per frame
@@ -105,6 +116,38 @@ public class SoloBigDialogue : MonoBehaviour
         textBoxEndPosition = textBox.transform.position;
 
         StartCoroutine(MoveSpritesBeginning());
+    }
+
+    IEnumerator TransitionBeginning()
+    {
+        StartCoroutine(displayController.FadeToWhite(1));
+        yield return new WaitForSeconds(1.1f);
+
+        background.enabled = true;
+
+        StartCoroutine(displayController.FadeFromWhite(1));
+        yield return new WaitForSeconds(1);
+        character1.GetComponent<Image>().enabled = true;
+
+        textBox.SetActive(true);
+        BeginningSprite();
+        SetPositions();
+    }
+
+    IEnumerator TransitionEnd()
+    {
+        StartCoroutine(displayController.FadeToWhite(1));
+        yield return new WaitForSeconds(1.1f);
+        background.enabled = false;
+        StartCoroutine(displayController.FadeFromWhite(1));
+        yield return new WaitForSeconds(1);
+
+        if (data.canPlayerMove == true)
+        {
+            player.StartMoving();
+        }
+
+        Destroy(gameObject);
     }
 
     IEnumerator TypeLine()
@@ -173,8 +216,9 @@ public class SoloBigDialogue : MonoBehaviour
         //}
 
         //mainCamera.state = mainCamera.initialState;
+        StartCoroutine(TransitionEnd());
+        //Destroy(gameObject);
 
-        Destroy(gameObject);
         //player.state = Player.State.Standard;
         //mainCamera.state = CameraController.State.FollowPlayer;
         //mainCamera.anim.enabled = false;

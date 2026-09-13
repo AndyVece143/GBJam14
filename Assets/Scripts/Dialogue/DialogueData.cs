@@ -9,6 +9,7 @@ public class DialogueData : ScriptableObject
     public List<DialogueSentence> Sentences;
     public Portrait Character1;
     public Portrait Character2;
+    public bool canPlayerMove;
 }
 
 [System.Serializable]
