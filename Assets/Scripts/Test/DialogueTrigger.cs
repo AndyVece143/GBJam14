@@ -10,6 +10,8 @@ public class DialogueTrigger : MonoBehaviour
     void Start()
     {
         player = Player.FindAnyObjectByType<Player>();
+        //SoloBigDialogue newDialogue = Instantiate(dialogue);
+        //newDialogue.data = data;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

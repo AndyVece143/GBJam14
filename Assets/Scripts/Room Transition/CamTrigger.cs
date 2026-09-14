@@ -21,7 +21,7 @@ public class CamTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && player.state != Player.State.ScreenTrans)
+        if (collision.gameObject.tag == "PlayerBounds" && player.state != Player.State.ScreenTrans)
         {
             Debug.Log("trans");
             //mainCamera.CameraTransition(direction);

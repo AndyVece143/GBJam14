@@ -18,12 +18,17 @@ public class Player : MonoBehaviour
         ScreenTrans,
     }
     public State state;
+    public SpriteRenderer inspectIcon;
+    public InteractableObject closestObject;
+    public Color dimmedColor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+
+        inspectIcon.enabled = false;
     }
 
     // Update is called once per frame
@@ -77,9 +82,11 @@ public class Player : MonoBehaviour
 
     public void Talk(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && closestObject != null && state == State.Standard)
         {
-            Debug.Log("Try talking");
+            closestObject.GenerateTextBox();
+            StopMoving();
+            inspectIcon.enabled = false;
         }
 
     }
@@ -95,6 +102,36 @@ public class Player : MonoBehaviour
     public void StartMoving()
     {
         state = State.Standard;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Inspect" && state != State.NoMove)
+        {
+            inspectIcon.enabled = true;
+
+            if (collision.gameObject.GetComponent("InteractableObject") as InteractableObject != null)
+            {
+                closestObject = collision.gameObject.GetComponent<InteractableObject>();
+                if (collision.gameObject.GetComponent<InteractableObject>().checker == false)
+                {
+                    inspectIcon.color = Color.white;
+                }
+                else
+                {
+                    inspectIcon.color = dimmedColor;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Inspect")
+        {
+            inspectIcon.enabled = false;
+            closestObject = null;
+        }
     }
 
     public IEnumerator ScreenTransition(string direction)

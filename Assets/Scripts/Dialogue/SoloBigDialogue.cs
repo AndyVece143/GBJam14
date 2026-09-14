@@ -44,6 +44,7 @@ public class SoloBigDialogue : MonoBehaviour
         player = Player.FindAnyObjectByType<Player>();
         //mainCamera = CameraController.FindAnyObjectByType<CameraController>();
         //mainCamera.state = CameraController.State.StayStill;
+        Debug.Log(textBox.transform.position);
 
         character1.GetComponent<Image>().enabled = false;
         background.enabled = false;
