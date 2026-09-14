@@ -102,6 +102,56 @@ public class Player : MonoBehaviour
     public void StartMoving()
     {
         state = State.Standard;
+        anim.Play("Idle");
+    }
+
+    public IEnumerator GoToPlace(Vector2 location, float duration, Vector2 direction)
+    {
+        float time = 0;
+        Vector2 startingPos = transform.position;
+
+        anim.SetFloat("horizontal", direction.x);
+        anim.SetFloat("vertical", direction.y);
+        movement.Set(direction.x, direction.y);
+
+        while (time < duration)
+        {
+            anim.SetFloat("horizontal", direction.x);
+            anim.SetFloat("vertical", direction.y);
+            time += Time.deltaTime;
+            float t = time / duration;
+            transform.position = Vector2.Lerp(startingPos, location, t);
+            yield return null;
+        }
+
+        transform.position = location;
+
+
+        //anim.SetFloat("horizontal", 0);
+        //anim.SetFloat("vertical", 0);
+        //if (movement != Vector2.zero)
+        //{
+        //    anim.SetFloat("lasthorizontal", 0);
+        //    anim.SetFloat("lastvertical", 0);
+        //}
+
+        //movement.Set(0, 0);
+        //body.linearVelocity = Vector2.zero;
+
+        //anim.SetFloat("horizontal", movement.x);
+        //anim.SetFloat("vertical", movement.y);
+        //if (movement != Vector2.zero)
+        //{
+        //    anim.SetFloat("lasthorizontal", movement.x);
+        //    anim.SetFloat("lastvertical", movement.y);
+        //}
+
+        switch (direction)
+        {
+            case Vector2 v when v.x == 1 && v.y == 0:
+                anim.Play("idleright");
+                break;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

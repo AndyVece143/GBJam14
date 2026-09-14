@@ -47,3 +47,4 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
+  canPlayerMove: 1
