@@ -97,12 +97,16 @@ public class SoloBigDialogue : MonoBehaviour
 
     void BeginningSprite()
     {
-        ChangeEmotion();
+        //ChangeEmotion();
+        //character1.ChangeEmotion(data.Sentences[index].emotion);
+        //character1.anim.SetBool("done", true);
+        character1.SetEmotion(data.Sentences[index].emotion);
     }
 
     void ChangeEmotion()
     {
         character1.ChangeEmotion(data.Sentences[index].emotion);
+        //character1.anim.SetBool("done", true);
     }
 
     void SetPositions()

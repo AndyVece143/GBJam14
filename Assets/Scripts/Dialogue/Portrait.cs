@@ -18,6 +18,13 @@ public class Portrait : MonoBehaviour
         anim.SetBool("done", true);
     }
 
+    public void SetEmotion(int i)
+    {
+        anim.SetInteger("emotion", i);
+        anim.SetBool("done", true);
+        emotion = i;
+    }
+
     public void ChangeEmotion(int i)
     {
         if (i != emotion)
