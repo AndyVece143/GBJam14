@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
 
     public IEnumerator GoToPlace(Vector2 location, float duration, Vector2 direction)
     {
+        StartMoving();
+        state = State.NoMove;
         float time = 0;
         Vector2 startingPos = transform.position;
 

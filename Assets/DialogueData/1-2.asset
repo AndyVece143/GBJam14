@@ -10,29 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26063e7e2da525d4cb1d8e301cd247b3, type: 3}
-  m_Name: MoreTesting
+  m_Name: 1-2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   Sentences:
-  - Text: Character 1 Speaking
-    emotion: 0
-    name: A
+  - Text: Ugh... nothing in the town seemed to help.
+    emotion: 5
+    name: 
     sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
-  - Text: Character 2 Speaking
-    emotion: 1
-    name: B
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
-  - Text: Character 1 Speaking
+  - Text: What should I do now? What can be done?
     emotion: 2
-    name: A
+    name: 
     sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
-  - Text: Character 2 Speaking
-    emotion: 3
-    name: B
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
-  - Text: Character 2 Speaking
-    emotion: 4
-    name: B
+  - Text: If only my solution could appear in front of me.
+    emotion: 6
+    name: 
     sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
-  canPlayerMove: 1
+  canPlayerMove: 0
+  chapter1: 1

@@ -1,6 +1,8 @@
+using GBTemplate;
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class BigDialogue : MonoBehaviour
 {
@@ -42,7 +44,9 @@ public class BigDialogue : MonoBehaviour
     private const string HTML_ALPHA = "<color=#00000000>";
     public bool ready = false;
     public float dampSpeed;
-    //public Player player;
+    public GBDisplayController displayController;
+    public Image background;
+    public Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,20 +55,28 @@ public class BigDialogue : MonoBehaviour
         canvas = GetComponent<Canvas>();
         canvas.worldCamera = Camera.main;
         mainText.text = string.Empty;
+        displayController = GBDisplayController.FindAnyObjectByType<GBDisplayController>();
+        player = Player.FindAnyObjectByType<Player>();
         //mainCamera = CameraController.FindAnyObjectByType<CameraController>();
         //nameText.text = names[0];
 
-        nameText.text = data.Sentences[0].name;
+        //nameText.text = data.Sentences[0].name;
         //player = Player.FindAnyObjectByType<Player>();
 
-        BeginningSprite();
-        SetPositions();
+        character1.GetComponent<Image>().enabled = false;
+        character2.GetComponent<Image>().enabled = false;
+        background.enabled = false;
+        textBox.SetActive(false);
+
+        StartCoroutine(TransitionBeginning());
+        //BeginningSprite();
+        //SetPositions();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (ready == true)
             {
@@ -72,7 +84,7 @@ public class BigDialogue : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.L) && ending == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ending == false)
         {
             StopAllCoroutines();
             StartCoroutine(MoveSpritesEnd());
@@ -107,11 +119,12 @@ public class BigDialogue : MonoBehaviour
 
             if (index > 0 && data.Sentences[index].name != data.Sentences[index - 1].name)
             {
+                Debug.Log("Changed name");
                 ChangeBothSprites();
             }
             ChangeEmotions();
             mainText.text = string.Empty;
-            nameText.text = data.Sentences[index].name;
+            //nameText.text = data.Sentences[index].name;
             StartCoroutine(TypeLine());
         }
         else
@@ -122,15 +135,23 @@ public class BigDialogue : MonoBehaviour
 
     void BeginningSprite()
     {
+        //if (!character1.isActiveSpeaker)
+        //{
+        //    StartCoroutine(ChangeSprite(false, character1));
+        //}
+        //if (!character2.isActiveSpeaker)
+        //{
+        //    StartCoroutine(ChangeSprite(false, character2));
+        //}
+        //ChangeEmotions();
         if (!character1.isActiveSpeaker)
         {
-            StartCoroutine(ChangeSprite(false, character1));
+            character1.SetEmotion(data.Sentences[index].emotion);
         }
         if (!character2.isActiveSpeaker)
         {
-            StartCoroutine(ChangeSprite(false, character2));
+            character2.SetEmotion(data.Sentences[index].emotion);
         }
-        ChangeEmotions();
     }
 
     void ChangeBothSprites()
@@ -167,9 +188,9 @@ public class BigDialogue : MonoBehaviour
         character2Position = character2.transform.position;
         textBoxPosition = textBox.transform.position;
 
-        character1.transform.position = new Vector3(character1Position.x - 7f, character1Position.y, character1Position.z);
-        character2.transform.position = new Vector3(character2Position.x + 7f, character2Position.y, character2Position.z);
-        textBox.transform.position = new Vector3(textBoxPosition.x, textBoxPosition.y - 6f, textBoxPosition.z);
+        character1.transform.position = new Vector3(character1Position.x - 120f, character1Position.y, character1Position.z);
+        character2.transform.position = new Vector3(character2Position.x + 120f, character2Position.y, character2Position.z);
+        textBox.transform.position = new Vector3(textBoxPosition.x, textBoxPosition.y - 50f, textBoxPosition.z);
 
         character1EndPosition = character1.transform.position;
         character2EndPosition = character2.transform.position;
@@ -180,7 +201,18 @@ public class BigDialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        int i = 4;
+        //character1.anim.SetBool("done", false);
+        //character2.anim.SetBool("done", false);
+        if (character1.isActiveSpeaker)
+        {
+            character1.anim.SetBool("done", false);
+        }
+
+        if (character2.isActiveSpeaker)
+        {
+            character2.anim.SetBool("done", false);
+        }
+        int i = 2;
         //string originalText = lines[index];
         string originalText = data.Sentences[index].Text;
         string displayedText = "";
@@ -194,9 +226,9 @@ public class BigDialogue : MonoBehaviour
             mainText.text = displayedText;
             //alphaIndex++;
             i++;
-            if (i == 5)
+            if (i == 3)
             {
-                //SoundManager.instance.PlaySound(audioClip);
+                SoundManager.instance.PlaySound(data.Sentences[index].sound);
                 i = 0;
             }
             //Debug.Log(c);
@@ -204,11 +236,14 @@ public class BigDialogue : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
         ready = true;
+        character1.DoneTalking();
+        character2.DoneTalking();
     }
 
     IEnumerator ChangeSprite(bool activeSpeaker, Portrait character)
     {
         float time = 0;
+        //yield return new WaitForSeconds(0);
 
         //Become brighter and bigger
         if (activeSpeaker)
@@ -250,6 +285,45 @@ public class BigDialogue : MonoBehaviour
             }
 
         }
+    }
+
+    IEnumerator TransitionBeginning()
+    {
+        StartCoroutine(displayController.FadeToWhite(1));
+        yield return new WaitForSeconds(1.1f);
+
+        background.enabled = true;
+
+        StartCoroutine(displayController.FadeFromWhite(1));
+        yield return new WaitForSeconds(1);
+        character1.GetComponent<Image>().enabled = true;
+        character2.GetComponent<Image>().enabled = true;
+
+        textBox.SetActive(true);
+        BeginningSprite();
+        SetPositions();
+    }
+
+    IEnumerator TransitionEnd()
+    {
+        StartCoroutine(displayController.FadeToWhite(1));
+        yield return new WaitForSeconds(1.1f);
+        background.enabled = false;
+        StartCoroutine(displayController.FadeFromWhite(1));
+        yield return new WaitForSeconds(1);
+
+        if (data.canPlayerMove == true)
+        {
+            player.StartMoving();
+        }
+
+        if (data.chapter1 == true)
+        {
+            Chapter1Manager manager = Chapter1Manager.FindAnyObjectByType<Chapter1Manager>();
+            manager.StartCutscene();
+        }
+
+        Destroy(gameObject);
     }
 
     IEnumerator MoveSpritesBeginning()
@@ -305,7 +379,7 @@ public class BigDialogue : MonoBehaviour
         //    mainCamera.state = CameraController.State.FollowPlayer;
         //}
 
-
-        Destroy(gameObject);
+        StartCoroutine(TransitionEnd());
+        //Destroy(gameObject);
     }
 }
