@@ -16,11 +16,18 @@ public class Player : MonoBehaviour
         Standard,
         NoMove,
         ScreenTrans,
+        Sword,
     }
     public State state;
     public SpriteRenderer inspectIcon;
     public InteractableObject closestObject;
     public Color dimmedColor;
+
+    public string direction;
+
+    public float swordTime;
+    private float swordTimeMax;
+    public bool sword;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +36,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
 
         inspectIcon.enabled = false;
+        swordTimeMax = swordTime;
     }
 
     // Update is called once per frame
@@ -44,6 +52,9 @@ public class Player : MonoBehaviour
                 break;
             case State.ScreenTrans:
                 break;
+            case State.Sword:
+                SwordMovement();
+                break;
         }
     }
 
@@ -53,7 +64,7 @@ public class Player : MonoBehaviour
         //float verticalInput = Input.GetAxis("Vertical");
 
         //body.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
-
+        swordTime = swordTimeMax;
         movement.Set(InputManager.Movement.x, InputManager.Movement.y);
         body.linearVelocity = movement * speed;
 
@@ -64,6 +75,67 @@ public class Player : MonoBehaviour
         {
             anim.SetFloat("lasthorizontal", movement.x);
             anim.SetFloat("lastvertical", movement.y);
+        }
+
+        Direction();
+    }
+
+    private void Direction()
+    {
+        //Left
+        if (anim.GetFloat("lasthorizontal") == -1 && anim.GetFloat("lastvertical") == 0)
+        {
+            //Debug.Log("Left");
+            direction = "left";
+        }
+
+        //Right
+        if (anim.GetFloat("lasthorizontal") == 1 && anim.GetFloat("lastvertical") == 0)
+        {
+            //Debug.Log("Right");
+            direction = "right";
+        }
+
+        //Up
+        if (anim.GetFloat("lasthorizontal") == 0 && anim.GetFloat("lastvertical") == 1)
+        {
+            //Debug.Log("Up");
+            direction = "up";
+        }
+
+        //Down
+        if (anim.GetFloat("lasthorizontal") == 0 && anim.GetFloat("lastvertical") == -1)
+        {
+            //Debug.Log("Down");
+            direction = "down";
+        }
+
+        //UpRight
+        if (anim.GetFloat("lasthorizontal") > 0 && anim.GetFloat("lasthorizontal") == anim.GetFloat("lastvertical"))
+        {
+            //Debug.Log("Up Right");
+            direction = "up";
+        }
+
+        //DownLeft
+        if (anim.GetFloat("lasthorizontal") < 0 && anim.GetFloat("lasthorizontal") == anim.GetFloat("lastvertical"))
+        {
+            //Debug.Log("Down Left");
+            direction = "down";
+        }
+
+        //Down Right
+        if (anim.GetFloat("lasthorizontal") > 0 && anim.GetFloat("lasthorizontal") + anim.GetFloat("lastvertical") == 0)
+        {
+            //Debug.Log("Down Right");
+            direction = "down";
+        }
+
+        //UpLeft
+        if (anim.GetFloat("lasthorizontal") < 0 && anim.GetFloat("lasthorizontal") + anim.GetFloat("lastvertical") == 0)
+        {
+            //Debug.Log("Up Left");
+            direction = "up";
         }
     }
 
@@ -89,6 +161,29 @@ public class Player : MonoBehaviour
             inspectIcon.enabled = false;
         }
 
+    }
+
+    public void Sword(InputAction.CallbackContext context)
+    {
+        if (context.started && state == State.Standard && sword == true)
+        {
+            movement.Set(0, 0);
+            body.linearVelocity = Vector2.zero;
+            anim.SetTrigger("sword");
+            state = State.Sword;
+        }
+    }
+
+    private void SwordMovement()
+    {
+        swordTime -= Time.deltaTime;
+
+        if (swordTime <= 0)
+        {
+            Debug.Log("Stop sword");
+            state = State.Standard;
+            anim.Play("Idle");
+        }
     }
 
     public void StopMoving()

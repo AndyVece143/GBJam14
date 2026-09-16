@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sword",
+                    "type": "Button",
+                    "id": "e99da8c8-4299-4213-a43b-3af63c51febf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -89,6 +98,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Talk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8496fbd-0246-4109-b5c7-77d3c3d95c91",
+                    "path": "<Keyboard>/c",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
