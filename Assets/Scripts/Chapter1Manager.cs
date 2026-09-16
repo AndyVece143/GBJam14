@@ -79,6 +79,7 @@ public class Chapter1Manager : MonoBehaviour
         yield return new WaitForSeconds(1);
         displayController.UpdateColorPalette(12);
         SoundManager.instance.PlaySound(paletteChange);
+        MusicPlayer.instance.StopMusic();
         yield return new WaitForSeconds(1);
         player.transform.localScale = new Vector3(-1, 1, 1);
         yield return new WaitForSeconds(1);

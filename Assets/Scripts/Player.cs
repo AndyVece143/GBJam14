@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     public float swordTime;
     private float swordTimeMax;
     public bool sword;
+
+    public int health;
+    public int gold;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

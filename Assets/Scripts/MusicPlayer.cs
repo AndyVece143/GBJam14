@@ -25,6 +25,11 @@ public class MusicPlayer : MonoBehaviour
         source.Play();
     }
 
+    public void StopMusic()
+    {
+        source.Stop();
+    }
+
     public void ChangeSong()
     {
         source.clip = song;
