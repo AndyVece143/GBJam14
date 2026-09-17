@@ -316,6 +316,7 @@ public class Player : MonoBehaviour
     private IEnumerator IFrames()
     {
         iFrames = true;
+        Physics2D.IgnoreLayerCollision(6, 8);
 
         float time = 0;
         
@@ -335,12 +336,14 @@ public class Player : MonoBehaviour
         }
 
         iFrames = false;
+        Physics2D.IgnoreLayerCollision(6, 8, false);
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private IEnumerator Knockback(Vector2 damagePosition)
     {
         inKnockback = true;
+        
         Vector2 direction = (Vector2)transform.position - damagePosition;
         direction = direction.normalized;
 

@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -30,7 +32,8 @@ public class Pirate : MonoBehaviour
     public float sightDistance;
     [SerializeField] private LayerMask raycastLayers;
     public Player player;
-
+    public Node currentNode;
+    public List<Node> path;
 
     public AreaScreen areaScreen;
 
@@ -85,6 +88,28 @@ public class Pirate : MonoBehaviour
         //aiPath.canMove = true;
         //anim.SetFloat("horizontal", aiPath.desiredVelocity.x);
         //anim.SetFloat("vertical", aiPath.desiredVelocity.y);
+        if (path.Count == 0)
+        {
+            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.transform.position));
+        }
+
+        if (path.Count > 0)
+        {
+            int x = 0;
+            Vector2 directionVector = (new Vector2(path[x].transform.position.x, path[x].transform.position.y) - (Vector2)transform.position);
+            directionVector = directionVector.normalized;
+
+            body.linearVelocity = directionVector * speed;
+
+            anim.SetFloat("horizontal", directionVector.x);
+            anim.SetFloat("vertical", directionVector.y);
+
+            if (Vector2.Distance(transform.position, path[x].transform.position) < 1)
+            {
+                currentNode = path[x];
+                path.RemoveAt(x);
+            }
+        }
     }
 
     public void ResetPosition()
@@ -95,6 +120,7 @@ public class Pirate : MonoBehaviour
         transform.position = point1;
         position2 = false;
         directionVector = new Vector2(1, 0);
+        path.Clear();
         StartCoroutine(Waiting());
     }
 
@@ -156,6 +182,14 @@ public class Pirate : MonoBehaviour
         //    //Debug.Log("Up Left");
         //    direction = "up";
         //}
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Node" && state == State.Wander)
+        {
+            currentNode = collision.gameObject.GetComponent<Node>();
+        }
     }
 
     public IEnumerator GoToPlace(Vector2 location, float duration)

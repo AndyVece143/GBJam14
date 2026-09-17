@@ -77,6 +77,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5815934820097919569}
+  - {fileID: 4936344885778308571}
   m_Father: {fileID: 5137080663119428478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &791499181524367039
@@ -404,6 +405,68 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!1001 &1236205921216720763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4220220891751707008}
+    m_Modifications:
+    - target: {fileID: 3140064804174507364, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_Name
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+--- !u!4 &4936344885778308571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6171771218857472672, guid: 6fe201501d0948c45a339012c3a55d9f, type: 3}
+  m_PrefabInstance: {fileID: 1236205921216720763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3104671609900194212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,6 +478,14 @@ PrefabInstance:
     - target: {fileID: 5722122920270663894, guid: 3a60922543e44c447932b8dab8cbb4f2, type: 3}
       propertyPath: m_Name
       value: Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879638059980555588, guid: 3a60922543e44c447932b8dab8cbb4f2, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879638059980555588, guid: 3a60922543e44c447932b8dab8cbb4f2, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8908220697656185845, guid: 3a60922543e44c447932b8dab8cbb4f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,7 +537,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8908220697656185845, guid: 3a60922543e44c447932b8dab8cbb4f2, type: 3}
   m_PrefabInstance: {fileID: 3104671609900194212}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3108310593359294882
+--- !u!114 &8661812826354852108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
