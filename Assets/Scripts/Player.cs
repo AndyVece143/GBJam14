@@ -31,6 +31,14 @@ public class Player : MonoBehaviour
 
     public int health;
     public int gold;
+
+    public float thrust;
+    public float knockbackDuration;
+
+    private bool inKnockback = false;
+
+    public float IFrameTimer;
+    public bool iFrames;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,20 +75,25 @@ public class Player : MonoBehaviour
         //float verticalInput = Input.GetAxis("Vertical");
 
         //body.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
-        swordTime = swordTimeMax;
-        movement.Set(InputManager.Movement.x, InputManager.Movement.y);
-        body.linearVelocity = movement * speed;
 
-        anim.SetFloat("horizontal", movement.x);
-        anim.SetFloat("vertical", movement.y);
-
-        if (movement != Vector2.zero)
+        if (inKnockback == false)
         {
-            anim.SetFloat("lasthorizontal", movement.x);
-            anim.SetFloat("lastvertical", movement.y);
+            swordTime = swordTimeMax;
+            movement.Set(InputManager.Movement.x, InputManager.Movement.y);
+            body.linearVelocity = movement * speed;
+
+            anim.SetFloat("horizontal", movement.x);
+            anim.SetFloat("vertical", movement.y);
+
+            if (movement != Vector2.zero)
+            {
+                anim.SetFloat("lasthorizontal", movement.x);
+                anim.SetFloat("lastvertical", movement.y);
+            }
+
+            Direction();
         }
 
-        Direction();
     }
 
     private void Direction()
@@ -254,6 +267,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("DIE");
+            if (state == State.Standard || state == State.Sword)
+            {
+                if (iFrames == false)
+                {
+                    StartCoroutine(Knockback(collision.gameObject.transform.position));
+                    StartCoroutine(IFrames());
+                }
+            }
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Inspect" && state != State.NoMove)
@@ -282,6 +311,45 @@ public class Player : MonoBehaviour
             inspectIcon.enabled = false;
             closestObject = null;
         }
+    }
+
+    private IEnumerator IFrames()
+    {
+        iFrames = true;
+
+        float time = 0;
+        
+        while (time < IFrameTimer)
+        {
+            time += Time.deltaTime;
+            if (gameObject.GetComponent<SpriteRenderer>().color == Color.white)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            }
+            else if (gameObject.GetComponent<SpriteRenderer>().color == Color.black)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+
+            yield return null;
+        }
+
+        iFrames = false;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator Knockback(Vector2 damagePosition)
+    {
+        inKnockback = true;
+        Vector2 direction = (Vector2)transform.position - damagePosition;
+        direction = direction.normalized;
+
+        body.AddForce(direction * thrust, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        body.linearVelocity = Vector2.zero;
+        inKnockback = false;
     }
 
     public IEnumerator ScreenTransition(string direction)

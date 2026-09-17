@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5603243363636624466}
   - component: {fileID: 2591436397695499050}
   - component: {fileID: 3383327372292330865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Overworld Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -201,6 +201,10 @@ MonoBehaviour:
   direction: 
   swordTime: 0.5
   sword: 0
+  health: 10
+  gold: 0
+  thrust: 30
+  knockbackDuration: 0.3
 --- !u!95 &1318106742468558125
 Animator:
   serializedVersion: 7

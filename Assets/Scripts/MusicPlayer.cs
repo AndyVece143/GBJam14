@@ -30,9 +30,9 @@ public class MusicPlayer : MonoBehaviour
         source.Stop();
     }
 
-    public void ChangeSong()
+    public void ChangeSong(AudioClip newSong)
     {
-        source.clip = song;
+        source.clip = newSong;
         PlayMusic();
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Chapter2Manager : MonoBehaviour
 {
     public GBDisplayController displayController;
+    public AudioClip chaseMusic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,5 +15,10 @@ public class Chapter2Manager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ChangeToChaseMusic()
+    {
+        MusicPlayer.instance.ChangeSong(chaseMusic);
     }
 }
