@@ -1,7 +1,6 @@
 using System.Collections;
 using System.IO;
 using UnityEngine;
-using Pathfinding;
 
 public class Pirate : MonoBehaviour
 {
@@ -32,9 +31,6 @@ public class Pirate : MonoBehaviour
     [SerializeField] private LayerMask raycastLayers;
     public Player player;
 
-    public AIPath aiPath;
-
-    public AIDestinationSetter destination;
 
     public AreaScreen areaScreen;
 
@@ -79,23 +75,23 @@ public class Pirate : MonoBehaviour
     public void BeginChasing()
     {
         StopAllCoroutines();
-        destination.target = player.transform;
+        //destination.target = player.transform;
         //aiPath.canMove = true;
         state = State.Chase;
     }
 
     private void ChaseMovement()
     {
-        aiPath.canMove = true;
-        anim.SetFloat("horizontal", aiPath.desiredVelocity.x);
-        anim.SetFloat("vertical", aiPath.desiredVelocity.y);
+        //aiPath.canMove = true;
+        //anim.SetFloat("horizontal", aiPath.desiredVelocity.x);
+        //anim.SetFloat("vertical", aiPath.desiredVelocity.y);
     }
 
     public void ResetPosition()
     {
         StopAllCoroutines();
         state = State.Wander;
-        aiPath.canMove = false;
+        //aiPath.canMove = false;
         transform.position = point1;
         position2 = false;
         directionVector = new Vector2(1, 0);
