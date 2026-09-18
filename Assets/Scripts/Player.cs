@@ -283,6 +283,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("DIE");
+            if (state == State.Standard || state == State.Sword)
+            {
+                if (iFrames == false)
+                {
+                    StartCoroutine(Knockback(collision.gameObject.transform.position));
+                    StartCoroutine(IFrames());
+                }
+            }
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Inspect" && state != State.NoMove)
@@ -302,6 +318,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

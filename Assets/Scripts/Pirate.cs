@@ -36,18 +36,32 @@ public class Pirate : MonoBehaviour
     public List<Node> path;
 
     public AreaScreen areaScreen;
+    public bool stationary;
+    private Vector2 initialDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        initialDirection = directionVector;
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         point1 = transform.position;
-        directionVector = new Vector2(1, 0);
+
         player = Player.FindAnyObjectByType<Player>();
 
-        StartCoroutine(Waiting());
+        if (stationary == false)
+        {
+            directionVector = new Vector2(1, 0);
+            StartCoroutine(Waiting());
+        }
+
+        else
+        {
+
+            anim.SetFloat("lasthoriztontal", directionVector.x);
+            anim.SetFloat("lastvertical", directionVector.y);
+        }
     }
 
     // Update is called once per frame
@@ -119,9 +133,22 @@ public class Pirate : MonoBehaviour
         //aiPath.canMove = false;
         transform.position = point1;
         position2 = false;
-        directionVector = new Vector2(1, 0);
-        path.Clear();
-        StartCoroutine(Waiting());
+
+        if (stationary == false)
+        {
+            directionVector = new Vector2(1, 0);
+            path.Clear();
+            StartCoroutine(Waiting());
+        }
+        else
+        {
+            movement.Set(0, 0);
+            body.linearVelocity = Vector2.zero;
+            anim.SetFloat("horizontal", movement.x);
+            anim.SetFloat("vertical", movement.y);
+            directionVector = initialDirection;
+            path.Clear();
+        }
     }
 
     private void GetDirection()

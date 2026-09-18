@@ -30,6 +30,7 @@ public class AreaScreen : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            manager.ChangeToRegularMusic();
             Debug.Log("Goodbyte");
             for (int i = 0; i < pirateList.Length; i++)
             {

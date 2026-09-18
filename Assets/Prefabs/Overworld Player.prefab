@@ -203,8 +203,10 @@ MonoBehaviour:
   sword: 0
   health: 10
   gold: 0
-  thrust: 30
-  knockbackDuration: 0.3
+  thrust: 60
+  knockbackDuration: 0.5
+  IFrameTimer: 0
+  iFrames: 0
 --- !u!95 &1318106742468558125
 Animator:
   serializedVersion: 7
