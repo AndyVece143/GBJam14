@@ -72,7 +72,7 @@ public class Pirate : MonoBehaviour
         if (detection.collider != null)
         {
             Debug.DrawLine(ledgeDetector.position, detection.point, Color.red);
-            if (detection.collider.CompareTag("Player") && state != State.Chase)
+            if (detection.collider.CompareTag("Player") && state != State.Chase && player.state != Player.State.Dead)
             {
                 Debug.Log("Found you");
                 areaScreen.ChaseThePlayer();

@@ -28,8 +28,22 @@ public class Chapter1Manager : MonoBehaviour
     void Start()
     {
         displayController.UpdateColorPalette(3);
-        StartCoroutine(Cutscene());
-        player.state = Player.State.ScreenTrans;
+
+        switch (StaticData.chapter1CutsceneWatch)
+        {
+            case false:
+                StaticData.chapter1CutsceneWatch = true;
+                StartCoroutine(Cutscene());
+                player.state = Player.State.ScreenTrans;
+                break;
+
+            case true:
+                player.transform.position = new Vector2(0, 8);
+                entranceWall.SetActive(true);
+                break;
+        }
+
+
     }
 
     // Update is called once per frame
@@ -134,6 +148,7 @@ public class Chapter1Manager : MonoBehaviour
     {
         StartCoroutine(player.GoToPlace(new Vector2(900, 144), 4, new Vector2(1, 0)));
         yield return new WaitForSeconds(4);
+        LevelLoader.instance.LoadNextLevel("Chapter2");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

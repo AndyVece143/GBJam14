@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
         NoMove,
         ScreenTrans,
         Sword,
+        Dead,
     }
     public State state;
     public SpriteRenderer inspectIcon;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
     private float swordTimeMax;
     public bool sword;
 
-    public int health;
+    public int health = 10;
     public int gold;
 
     public float thrust;
@@ -65,6 +66,9 @@ public class Player : MonoBehaviour
                 break;
             case State.Sword:
                 SwordMovement();
+                break;
+            case State.Dead:
+                StayStill();
                 break;
         }
     }
@@ -264,24 +268,28 @@ public class Player : MonoBehaviour
             case Vector2 v when v.x == 1 && v.y == 0:
                 anim.Play("idleright");
                 break;
+
+            case Vector2 v when v.x == 0 && v.y == 1:
+                anim.Play("idleup");
+                break;
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("DIE");
-            if (state == State.Standard || state == State.Sword)
-            {
-                if (iFrames == false)
-                {
-                    StartCoroutine(Knockback(collision.gameObject.transform.position));
-                    StartCoroutine(IFrames());
-                }
-            }
-        }
-    }
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("DIE");
+    //        if (state == State.Standard || state == State.Sword)
+    //        {
+    //            if (iFrames == false)
+    //            {
+    //                StartCoroutine(Knockback(collision.gameObject.transform.position));
+    //                StartCoroutine(IFrames());
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -360,17 +368,31 @@ public class Player : MonoBehaviour
 
     private IEnumerator Knockback(Vector2 damagePosition)
     {
-        inKnockback = true;
-        
-        Vector2 direction = (Vector2)transform.position - damagePosition;
-        direction = direction.normalized;
+        health -= 5;
 
-        body.AddForce(direction * thrust, ForceMode2D.Impulse);
+        if (health > 0)
+        {
+            inKnockback = true;
 
-        yield return new WaitForSeconds(knockbackDuration);
+            Vector2 direction = (Vector2)transform.position - damagePosition;
+            direction = direction.normalized;
 
-        body.linearVelocity = Vector2.zero;
-        inKnockback = false;
+            body.AddForce(direction * thrust, ForceMode2D.Impulse);
+
+            yield return new WaitForSeconds(knockbackDuration);
+
+            body.linearVelocity = Vector2.zero;
+            inKnockback = false;
+        }
+
+        else
+        {
+            state = State.Dead;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            //boxCollider.enabled = false;
+            StartCoroutine(DeathScreen.instance.OnDeath());
+        }
+
     }
 
     public IEnumerator ScreenTransition(string direction)

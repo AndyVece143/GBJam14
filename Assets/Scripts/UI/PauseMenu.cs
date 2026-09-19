@@ -1,6 +1,7 @@
 using GBTemplate;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -10,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public Player player;
     public GameObject optionsMenuUI;
     public Button musicButton;
+    public Button resumeButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +49,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        resumeButton.Select();
+    }
+
+    public void RestartLevel()
+    {
+        Resume();
+        string currentScene = SceneManager.GetActiveScene().name;
+        LevelLoader.instance.LoadNextLevel(currentScene);
     }
 
     public void Options()

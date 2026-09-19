@@ -11,6 +11,7 @@ public class DialogueData : ScriptableObject
     public Portrait Character2;
     public bool canPlayerMove;
     public bool chapter1;
+    public bool chapter2;
 }
 
 [System.Serializable]

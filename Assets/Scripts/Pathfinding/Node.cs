@@ -27,7 +27,6 @@ public class Node : MonoBehaviour
             {
                 if (otherNode.collider.CompareTag("Node"))
                 {
-                    Debug.Log("Sans");
                     connections.Add(otherNode.collider.gameObject.GetComponent<Node>());
                 }
             }

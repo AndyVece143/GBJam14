@@ -26,7 +26,7 @@ namespace GBTemplate
                 instance = this;
 
                 //Sets this to not be destroyed when reloading scene
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
             }
             //If instance already exists and it's not this:
             else if (instance != this)
