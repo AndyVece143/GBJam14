@@ -132,7 +132,8 @@ public class Chapter2Manager : MonoBehaviour
     {
         StartCoroutine(player.GoToPlace(new Vector2(800, -363), 3, new Vector2(0, 1)));
         yield return new WaitForSeconds(1);
-        LevelLoader.instance.LoadNextLevel("Chapter1");
+        StaticData.goingToChapter = 2;
+        LevelLoader.instance.LoadNextLevel("ChapterCard");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

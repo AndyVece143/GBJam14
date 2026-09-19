@@ -52,7 +52,6 @@ public class Pirate : MonoBehaviour
 
         if (stationary == false)
         {
-            directionVector = new Vector2(1, 0);
             StartCoroutine(Waiting());
         }
 
@@ -136,7 +135,7 @@ public class Pirate : MonoBehaviour
 
         if (stationary == false)
         {
-            directionVector = new Vector2(1, 0);
+            directionVector = initialDirection;
             path.Clear();
             StartCoroutine(Waiting());
         }
