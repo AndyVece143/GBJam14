@@ -15,6 +15,12 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
+
+        //soundText.text = (SoundManager.instance.source.volume * 10).ToString("00");
+        //musicText.text = (MusicPlayer.instance.source.volume * 10).ToString("00");
+
+        soundText.text = (StaticData.soundVolume * 10).ToString("00");
+        musicText.text = (StaticData.musicVolume * 10).ToString("00");
     }
 
     // Update is called once per frame
@@ -26,6 +32,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 SoundManager.instance.source.volume += 0.1f;
                 SoundManager.instance.source.volume = Mathf.Clamp01(SoundManager.instance.source.volume);
+                StaticData.soundVolume = SoundManager.instance.source.volume;
                 UpdateText();
             }
 
@@ -33,6 +40,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 SoundManager.instance.source.volume -= 0.1f;
                 SoundManager.instance.source.volume = Mathf.Clamp01(SoundManager.instance.source.volume);
+                StaticData.soundVolume = SoundManager.instance.source.volume;
                 UpdateText();
             }
         }
@@ -43,6 +51,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 MusicPlayer.instance.source.volume += 0.1f;
                 MusicPlayer.instance.source.volume = Mathf.Clamp01(MusicPlayer.instance.source.volume);
+                StaticData.musicVolume = MusicPlayer.instance.source.volume;
                 UpdateText();
             }
 
@@ -50,6 +59,7 @@ public class OptionsMenu : MonoBehaviour
             {
                 MusicPlayer.instance.source.volume -= 0.1f;
                 MusicPlayer.instance.source.volume = Mathf.Clamp01(MusicPlayer.instance.source.volume);
+                StaticData.musicVolume = MusicPlayer.instance.source.volume;
                 UpdateText();
             }
         }

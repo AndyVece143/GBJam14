@@ -10,7 +10,7 @@ public class MusicPlayer : MonoBehaviour
     {
         instance = this;
         source = GetComponent<AudioSource>();
-
+        source.volume = StaticData.musicVolume;
     }
 
     // Update is called once per frame

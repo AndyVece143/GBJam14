@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
         source = GetComponent<AudioSource>();
+        source.volume = StaticData.soundVolume;
 
     }
 
