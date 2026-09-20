@@ -38,6 +38,13 @@ public class Pirate : MonoBehaviour
     public AreaScreen areaScreen;
     public bool stationary;
     private Vector2 initialDirection;
+    public bool iFrames;
+    public float IFrameTimer;
+    private bool inKnockback = false;
+    public float thrust;
+    public float knockbackDuration;
+    public Explosion explosion;
+    public int health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,11 +59,13 @@ public class Pirate : MonoBehaviour
 
         if (stationary == false)
         {
+            //directionVector = new Vector2(1, 0);
             StartCoroutine(Waiting());
         }
 
         else
         {
+            
 
             anim.SetFloat("lasthoriztontal", directionVector.x);
             anim.SetFloat("lastvertical", directionVector.y);
@@ -106,7 +115,7 @@ public class Pirate : MonoBehaviour
             path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.transform.position));
         }
 
-        if (path.Count > 0)
+        if (path.Count > 0 && inKnockback == false)
         {
             int x = 0;
             Vector2 directionVector = (new Vector2(path[x].transform.position.x, path[x].transform.position.y) - (Vector2)transform.position);
@@ -216,6 +225,64 @@ public class Pirate : MonoBehaviour
         {
             currentNode = collision.gameObject.GetComponent<Node>();
         }
+
+        if (collision.gameObject.tag == "Sword")
+        {
+            if (iFrames == false)
+            {
+                StartCoroutine(Knockback(collision.gameObject.transform.position));
+                StartCoroutine(IFrames());
+            }
+        }
+    }
+
+    private IEnumerator IFrames()
+    {
+        iFrames = true;
+        float time = 0;
+        while (time < IFrameTimer)
+        {
+            time += Time.deltaTime;
+            if (gameObject.GetComponent<SpriteRenderer>().color == Color.white)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            }
+            else if (gameObject.GetComponent<SpriteRenderer>().color == Color.black)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+
+            yield return null;
+        }
+
+        iFrames = false;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator Knockback(Vector2 damagePosition)
+    {
+        health -= 1;
+        if (health > 0)
+        {
+            inKnockback = true;
+            Vector2 direction = (Vector2)transform.position - damagePosition;
+            direction = direction.normalized;
+
+            body.AddForce(direction * thrust, ForceMode2D.Impulse);
+
+            yield return new WaitForSeconds(knockbackDuration);
+
+            body.linearVelocity = Vector2.zero;
+            inKnockback = false;
+        }
+
+        else
+        {
+            Explosion newExplosion = Instantiate(explosion);
+            newExplosion.transform.position = transform.position;
+            Destroy(gameObject);
+        }
+
     }
 
     public IEnumerator GoToPlace(Vector2 location, float duration)

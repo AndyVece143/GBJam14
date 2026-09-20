@@ -8,6 +8,8 @@ TagManager:
   - PlayerBounds
   - Enemy
   - Node
+  - Sword
+  - Developer
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - Player
   - Node
   - Enemy
-  - 
-  - 
+  - Enemy Wall
+  - Slime
   - 
   - 
   - 

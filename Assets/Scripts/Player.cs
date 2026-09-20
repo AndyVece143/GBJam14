@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public State state;
     public SpriteRenderer inspectIcon;
     public InteractableObject closestObject;
+    public DeveloperTalk closestDeveloper;
     public Color dimmedColor;
 
     public string direction;
@@ -40,6 +41,9 @@ public class Player : MonoBehaviour
 
     public float IFrameTimer;
     public bool iFrames;
+
+    public GameObject swordBox;
+    public Explosion explosion;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -107,6 +111,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Left");
             direction = "left";
+            swordBox.transform.position = new Vector2(transform.position.x - 16, transform.position.y);
         }
 
         //Right
@@ -114,6 +119,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Right");
             direction = "right";
+            swordBox.transform.position = new Vector2(transform.position.x + 16, transform.position.y);
         }
 
         //Up
@@ -121,6 +127,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Up");
             direction = "up";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y + 16);
         }
 
         //Down
@@ -128,6 +135,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Down");
             direction = "down";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y - 16);
         }
 
         //UpRight
@@ -135,6 +143,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Up Right");
             direction = "up";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y + 16);
         }
 
         //DownLeft
@@ -142,6 +151,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Down Left");
             direction = "down";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y - 16);
         }
 
         //Down Right
@@ -149,6 +159,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Down Right");
             direction = "down";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y - 16);
         }
 
         //UpLeft
@@ -156,6 +167,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Up Left");
             direction = "up";
+            swordBox.transform.position = new Vector2(transform.position.x, transform.position.y + 16);
         }
     }
 
@@ -181,6 +193,13 @@ public class Player : MonoBehaviour
             inspectIcon.enabled = false;
         }
 
+        if (context.started && closestDeveloper != null && state == State.Standard)
+        {
+            closestDeveloper.GenerateDialogue();
+            StopMoving();
+            inspectIcon.enabled = false;
+        }
+
     }
 
     public void Sword(InputAction.CallbackContext context)
@@ -191,6 +210,7 @@ public class Player : MonoBehaviour
             body.linearVelocity = Vector2.zero;
             anim.SetTrigger("sword");
             state = State.Sword;
+            swordBox.SetActive(true);
         }
     }
 
@@ -203,6 +223,7 @@ public class Player : MonoBehaviour
             Debug.Log("Stop sword");
             state = State.Standard;
             anim.Play("Idle");
+            swordBox.SetActive(false);
         }
     }
 
@@ -291,21 +312,21 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("DIE");
-            if (state == State.Standard || state == State.Sword)
-            {
-                if (iFrames == false)
-                {
-                    StartCoroutine(Knockback(collision.gameObject.transform.position));
-                    StartCoroutine(IFrames());
-                }
-            }
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("DIE");
+    //        if (state == State.Standard || state == State.Sword)
+    //        {
+    //            if (iFrames == false)
+    //            {
+    //                StartCoroutine(Knockback(collision.gameObject.transform.position));
+    //                StartCoroutine(IFrames());
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -327,6 +348,20 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (collision.gameObject.tag == "Developer" && state != State.NoMove)
+        {
+            inspectIcon.enabled = true;
+            closestDeveloper = collision.gameObject.GetComponent<DeveloperTalk>();
+
+            if (collision.gameObject.GetComponent<DeveloperTalk>().checker == false)
+            {
+                inspectIcon.color = Color.white;
+            }
+            else
+            {
+                inspectIcon.color = dimmedColor;
+            }
+        }
 
     }
 
@@ -337,9 +372,15 @@ public class Player : MonoBehaviour
             inspectIcon.enabled = false;
             closestObject = null;
         }
+
+        if (collision.gameObject.tag == "Developer")
+        {
+            inspectIcon.enabled = false;
+            closestDeveloper = null;
+        }
     }
 
-    private IEnumerator IFrames()
+    public IEnumerator IFrames()
     {
         iFrames = true;
         Physics2D.IgnoreLayerCollision(6, 8);
@@ -366,9 +407,9 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    private IEnumerator Knockback(Vector2 damagePosition)
+    public IEnumerator Knockback(Vector2 damagePosition)
     {
-        health -= 5;
+        health -= 1;
 
         if (health > 0)
         {
@@ -389,6 +430,8 @@ public class Player : MonoBehaviour
         {
             state = State.Dead;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Explosion newExplosion = Instantiate(explosion);
+            newExplosion.transform.position = transform.position;
             //boxCollider.enabled = false;
             StartCoroutine(DeathScreen.instance.OnDeath());
         }

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26063e7e2da525d4cb1d8e301cd247b3, type: 3}
+  m_Name: 3-1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  Sentences:
+  - Text: Woah, this is a dungeon alright.
+    emotion: 0
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: I know there's gonna be tons of gold here.
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Time to fight for the gold!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: ...wait, am I really comfortable with killing pirates?
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Like, they're trying to kill me, but do I wanna kill?
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: ...oh, hey, there's a note attached to the sword.
+    emotion: 0
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: '"All the pirates are undead, go wild."'
+    emotion: 0
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: ...okay, I guess that answers that. Let's go!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  Character1: {fileID: 0}
+  Character2: {fileID: 0}
+  canPlayerMove: 1
+  chapter1: 0
+  chapter2: 0

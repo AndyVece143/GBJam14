@@ -29,7 +29,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688915015724075227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 8}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &5637420167174325898
@@ -125,7 +125,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   textBox: {fileID: 6408191085456483756}
   duration: 1
-  audioClip: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+  audioClip: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   ready: 0
   dampSpeed: 7
   player: {fileID: 0}
