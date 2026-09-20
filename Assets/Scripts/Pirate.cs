@@ -45,6 +45,7 @@ public class Pirate : MonoBehaviour
     public float knockbackDuration;
     public Explosion explosion;
     public int health;
+    public AudioClip damageSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -264,6 +265,7 @@ public class Pirate : MonoBehaviour
         health -= 1;
         if (health > 0)
         {
+            SoundManager.instance.PlaySound(damageSound);
             inKnockback = true;
             Vector2 direction = (Vector2)transform.position - damagePosition;
             direction = direction.normalized;

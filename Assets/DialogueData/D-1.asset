@@ -20,7 +20,7 @@ MonoBehaviour:
   - Text: Hey there, how's it going?
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: You look, strange...
     emotion: 6
     name: Pearl
@@ -28,7 +28,7 @@ MonoBehaviour:
   - Text: Strange how?
     emotion: 2
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: eh, nevermind. So, who are you?
     emotion: 2
     name: Pearl
@@ -36,7 +36,7 @@ MonoBehaviour:
   - Text: Me? Well I'm the game developer, of course.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: Woah, cool! What have you made?
     emotion: 0
     name: Pearl
@@ -44,7 +44,7 @@ MonoBehaviour:
   - Text: Something that is beyond your comprehension.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: ...okay?
     emotion: 6
     name: Sign
@@ -52,23 +52,23 @@ MonoBehaviour:
   - Text: Anyway, I hope you enjoyed playing my game.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: I sure hope you got a lot of...
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: old gold.
     emotion: 1
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: This was a very fun project to work on, it's so unique.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: Be sure to give the game an honest rating!
     emotion: 1
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: ...you're quirky.
     emotion: 1
     name: Pearl
@@ -76,11 +76,11 @@ MonoBehaviour:
   - Text: Thanks, my friends say that all the time.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: Now go beat the game.
     emotion: 2
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 1

@@ -10,6 +10,8 @@ public class DoorTransition : MonoBehaviour
     public CameraController mainCamera;
     public Vector3 cameraTeleportPoint;
     public int paletteColor;
+    public bool changeMusic;
+    public AudioClip newSong;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +42,10 @@ public class DoorTransition : MonoBehaviour
         player.transform.position = playerTeleportPoint;
         mainCamera.transform.position = cameraTeleportPoint;
         displayController.UpdateColorPalette(paletteColor);
+        if (changeMusic)
+        {
+            MusicPlayer.instance.ChangeSong(newSong);
+        }
         StartCoroutine(displayController.FadeFromWhite(1));
         yield return new WaitForSeconds(1);
         player.StartMoving();

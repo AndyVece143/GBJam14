@@ -17,6 +17,7 @@ public class DungeonScreen : MonoBehaviour
     private bool enemiesDefeated = false;
     private bool slimesDefeated = false;
     private bool piratesDefeated = false;
+    public AudioClip doorSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +45,7 @@ public class DungeonScreen : MonoBehaviour
                 doorList[i].OpenTheDoor();
             }
             enemiesDefeated = true;
+            SoundManager.instance.PlaySound(doorSound);
         }
     }
 

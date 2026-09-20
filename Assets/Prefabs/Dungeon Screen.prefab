@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 0}
   doorList:
   - {fileID: 0}
+  doorSound: {fileID: 8300000, guid: 9c711df134796d841a65ae261b7bef77, type: 3}
 --- !u!61 &2177612236832554111
 BoxCollider2D:
   m_ObjectHideFlags: 0

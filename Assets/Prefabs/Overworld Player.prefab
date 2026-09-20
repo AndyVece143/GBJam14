@@ -291,6 +291,7 @@ MonoBehaviour:
   state: 0
   inspectIcon: {fileID: 2686255296663248234}
   closestObject: {fileID: 0}
+  closestDeveloper: {fileID: 0}
   dimmedColor: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 1}
   direction: 
   swordTime: 0.5
@@ -303,6 +304,8 @@ MonoBehaviour:
   iFrames: 0
   swordBox: {fileID: 3246477627822332725}
   explosion: {fileID: 3494853771552858994, guid: 584584809fbcdef4bb3c564c40dd2832, type: 3}
+  damageSound: {fileID: 8300000, guid: 588da02315f8d344ea781dd02e393794, type: 3}
+  swordSwing: {fileID: 8300000, guid: 93f0beb44e840604093c84a253b108b9, type: 3}
 --- !u!95 &1318106742468558125
 Animator:
   serializedVersion: 7

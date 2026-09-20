@@ -20,7 +20,7 @@ MonoBehaviour:
   - Text: No, you can't.
     emotion: 0
     name: Me
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: f349ff872d5d1b24289e2c03180df28c, type: 3}
   - Text: Awesome.
     emotion: 1
     name: Pearl

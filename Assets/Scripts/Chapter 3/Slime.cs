@@ -22,6 +22,7 @@ public class Slime : MonoBehaviour
 
     public float health;
     public Explosion explosion;
+    public AudioClip damageSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -108,6 +109,7 @@ public class Slime : MonoBehaviour
 
         if (health > 0)
         {
+            SoundManager.instance.PlaySound(damageSound);
             inKnockback = true;
             Vector2 direction = (Vector2)transform.position - damagePosition;
             direction = direction.normalized;

@@ -164,6 +164,12 @@ public class SoloBigDialogue : MonoBehaviour
             manager.StartCutscene();
         }
 
+        if (data.chapter3 == true)
+        {
+            Chapter3Manager manager = Chapter3Manager.FindAnyObjectByType<Chapter3Manager>();
+            manager.StartCutscene();
+        }
+
         Destroy(gameObject);
     }
 
