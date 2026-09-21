@@ -16,25 +16,26 @@ MonoBehaviour:
   - Text: Finally, some goddamn gameplay!
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Now I can face my opponents head on!
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: And just in time for the ominous dungeon!
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: I bet there's tons of gold in there.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Time to get my college fund!
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 0
   chapter1: 0
   chapter2: 1
+  chapter3: 0

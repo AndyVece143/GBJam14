@@ -170,6 +170,12 @@ public class SoloBigDialogue : MonoBehaviour
             manager.StartCutscene();
         }
 
+        if (data.boss == true)
+        {
+            BossManager manager = BossManager.FindAnyObjectByType<BossManager>();
+            manager.StartCutscene();
+        }
+
         Destroy(gameObject);
     }
 

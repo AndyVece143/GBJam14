@@ -34,8 +34,10 @@ public class DeathScreen : MonoBehaviour
         StartCoroutine(displayController.FadeToBlack(1f));
         yield return new WaitForSeconds(1.1f);
         graveImage.GetComponent<Image>().enabled = true;
+        ChangeImage();
         displayController.UpdateColorPalette(40);
         MusicPlayer.instance.ChangeSong(deadMusic);
+        MusicPlayer.instance.source.loop = false;
         StartCoroutine(displayController.FadeFromBlack(1f));
         yield return new WaitForSeconds(3);
 
@@ -46,9 +48,20 @@ public class DeathScreen : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(tryAgainButton.gameObject);
     }
 
+    private void ChangeImage()
+    {
+        int i = Random.Range(0, 4);
+        graveImage.GetComponent<Animator>().SetInteger("wompwomp", i);
+    }
+
     public void TryAgain()
     {
         string currentScene = SceneManager.GetActiveScene().name;
         LevelLoader.instance.LoadNextLevel(currentScene);
+    }
+
+    public void QuitGame()
+    {
+        LevelLoader.instance.LoadNextLevel("Title");
     }
 }

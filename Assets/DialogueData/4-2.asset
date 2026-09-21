@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26063e7e2da525d4cb1d8e301cd247b3, type: 3}
+  m_Name: 4-2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  Sentences:
+  - Text: Alright gold! Come to mama!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: ...........where is it?
+    emotion: 6
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Where the hell is all the gold?! It should be here!
+    emotion: 3
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: I almost died for nothing? God dammit!!!
+    emotion: 3
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Huh? What's that on the table?
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  Character1: {fileID: 0}
+  Character2: {fileID: 0}
+  canPlayerMove: 0
+  chapter1: 0
+  chapter2: 0
+  chapter3: 0
+  boss: 1

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26063e7e2da525d4cb1d8e301cd247b3, type: 3}
+  m_Name: 4-3
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  Sentences:
+  - Text: It's some kind of credit card...
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Woah! It's made out of solid gold! Cool!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: I wonder how much is on it? Let's check.
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: ...woah! That's a lot of money!
+    emotion: 4
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: It's like I have infinite wealth!
+    emotion: 4
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: With this card and all the gold I've collected...
+    emotion: 0
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: I'm essentially set for life. That's crazy!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: This is more than enough for my college fund!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: '...actually, I bet I can pay for all of my friends as well! '
+    emotion: 2
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: 'I better be smart with all this money. '
+    emotion: 6
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: All this money shouldn't change my goals for life.
+    emotion: 6
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: Okay, time to get out of here and pay for college!
+    emotion: 1
+    name: 
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  Character1: {fileID: 0}
+  Character2: {fileID: 0}
+  canPlayerMove: 0
+  chapter1: 0
+  chapter2: 0
+  chapter3: 0
+  boss: 1

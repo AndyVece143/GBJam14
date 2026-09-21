@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        gold = StaticData.goldAmount;
 
         inspectIcon.enabled = false;
         swordTimeMax = swordTime;

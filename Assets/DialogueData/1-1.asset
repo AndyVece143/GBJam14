@@ -16,31 +16,34 @@ MonoBehaviour:
   - Text: Phew, I'm almost home. It's been almost a whole year.
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: My name is Pearl, and I'm a college student.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: 'I just finished up my first year. '
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: I enjoyed it, but I've run into a roadblock.
     emotion: 6
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Tuition is getting so expensive! I can't afford it!
     emotion: 5
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: I need to figure out how to get the money to keep going.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: 'Maybe I can find a "get rich quick" scheme here. '
     emotion: 2
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 1
+  chapter1: 0
+  chapter2: 0
+  chapter3: 0

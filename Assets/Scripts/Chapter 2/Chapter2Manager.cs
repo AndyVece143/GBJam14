@@ -133,6 +133,7 @@ public class Chapter2Manager : MonoBehaviour
         StartCoroutine(player.GoToPlace(new Vector2(800, -363), 3, new Vector2(0, 1)));
         yield return new WaitForSeconds(1);
         StaticData.goingToChapter = 2;
+        StaticData.goldAmount = player.gold;
         LevelLoader.instance.LoadNextLevel("ChapterCard");
     }
 

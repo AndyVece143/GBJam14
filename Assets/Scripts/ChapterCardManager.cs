@@ -33,6 +33,12 @@ public class ChapterCardManager : MonoBehaviour
                 anim.SetInteger("chapter", 2);
                 displayController.UpdateColorPalette(24);
                 break;
+
+            case 3:
+                chapterText.text = "The End";
+                anim.SetInteger("chapter", 3);
+                displayController.UpdateColorPalette(0);
+                break;
         }
 
         StartCoroutine(ChapterCardWait());
@@ -58,6 +64,9 @@ public class ChapterCardManager : MonoBehaviour
                 break;
             case 2:
                 sceneName = "Chapter3";
+                break;
+            case 3:
+                sceneName = "Title";
                 break;
 
         }

@@ -16,25 +16,26 @@ MonoBehaviour:
   - Text: Phew, so far so good.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: I've got quite a bit of gold, but it's not enough.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Hmm? A sword in the ground? I wonder who left it here.
     emotion: 2
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: I'm gonna try pulling it out of the ground.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Don't mind if I do!
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 0
   chapter1: 0
   chapter2: 1
+  chapter3: 0

@@ -16,20 +16,23 @@ MonoBehaviour:
   - Text: Thanks for the help, random floating sign.
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Guess I'm raiding a pirate base. Yeah, okay.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
-  - Text: I always wanted to risk dying at somepoint.
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
+  - Text: I always wanted to risk dying at some point.
     emotion: 0
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: Here I go!
     emotion: 1
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 0
   chapter1: 1
+  chapter2: 0
+  chapter3: 0
+  boss: 0

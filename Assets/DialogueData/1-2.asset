@@ -16,16 +16,18 @@ MonoBehaviour:
   - Text: Ugh... nothing in the town seemed to help.
     emotion: 5
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: What should I do now? What can be done?
     emotion: 2
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   - Text: If only my solution could appear in front of me.
     emotion: 6
     name: 
-    sound: {fileID: 8300000, guid: 86c0c0a5e3a75ff42a0030803f8a4275, type: 3}
+    sound: {fileID: 8300000, guid: fe9aaa4f842912847ac67bb08e50481c, type: 3}
   Character1: {fileID: 0}
   Character2: {fileID: 0}
   canPlayerMove: 0
   chapter1: 1
+  chapter2: 0
+  chapter3: 0

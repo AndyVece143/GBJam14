@@ -68,6 +68,7 @@ public class Chapter3Manager : MonoBehaviour
     {
         StartCoroutine(player.GoToPlace(new Vector2(-480, 715), 4, new Vector2(0, 1)));
         yield return new WaitForSeconds(2f);
+        StaticData.goldAmount = player.gold;
         LevelLoader.instance.LoadNextLevel("Boss");
     }
 

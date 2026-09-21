@@ -23,6 +23,13 @@ public class TitleManager : MonoBehaviour
     {
         playButton.Select();
         displayController.UpdateColorPalette(41);
+
+        StaticData.chapter1CutsceneWatch = false;
+        StaticData.chapter2CutsceneWatch = false;
+        StaticData.chapter3CutsceneWatch = false;
+        StaticData.bossCutsceneWatch = false;
+        StaticData.goingToChapter = 0;
+        StaticData.goldAmount = 0;
         //EventSystem.current.SetSelectedGameObject(playButton.gameObject);
     }
 

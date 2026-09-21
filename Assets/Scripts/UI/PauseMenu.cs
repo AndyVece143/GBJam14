@@ -65,4 +65,10 @@ public class PauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(true);
         musicButton.Select();
     }
+
+    public void QuitGame()
+    {
+        Resume();
+        LevelLoader.instance.LoadNextLevel("Title");
+    }
 }
